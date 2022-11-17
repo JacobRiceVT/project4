@@ -29,7 +29,7 @@ public class LinkedList<T> {
          * @param newdata
          *            new data for new node
          */
-        public void Node(E newdata) {
+        public Node(E newdata) {
             data = newdata;
         }
 
@@ -43,7 +43,7 @@ public class LinkedList<T> {
          *            next Node
          */
 
-        public void Node(E newdata, Node<E> nextNode) {
+        public Node(E newdata, Node<E> nextNode) {
             data = newdata;
             next = nextNode;
 
@@ -99,19 +99,13 @@ public class LinkedList<T> {
      */
 
     private Node head;
-    private Node tail;
-    private int size = 0;
+    private int size;
 
     /**
      * Constructor
      */
     public LinkedList() {
-        tail = new Node();
-        head = new Node();
-
-        tail = head;
-        head.setNext(tail);
-
+        head = null;
         size = 0;
     }
 
@@ -128,16 +122,21 @@ public class LinkedList<T> {
      * clears the list
      */
     public void clear() {
-        tail = new Node();
-        head = new Node();
-
-        tail.setPrevious(head);
-        head.setNext(tail);
-
+        head.setNext(null);
+        head=null;
         size = 0;
     }
 
-
+    /**
+     * @param data
+     *            data to be added
+     */
+    public void add(T data) {
+        Node add=new Node(data);
+        add.setNext(head.getNext());
+        head.setNext(add);
+        size++;
+    }
     /**
      * @param index
      *            index to go to
@@ -146,8 +145,6 @@ public class LinkedList<T> {
     public T get(int index) {
         return (T)goToNode(index).getData();
     }
-
-
     /**
      * @param index
      *            index to go to
@@ -163,26 +160,14 @@ public class LinkedList<T> {
         }
         return null;
     }
-
-
-    /**
-     * @param newNode
-     *            new Node
-     */
-    public void add(Node newNode) {
-        tail.setNext(newNode);
-        tail = newNode;
-        size++;
-    }
-
-
     /**
      * @param index
      *            index to search
-     * @param newNode
-     *            new node to take over
+     * @param data
+     *            data to be added
      */
-    public void add(int index, Node newNode) {
+    public void add(int index, T data) {
+        Node newNode=new Node(data);
         Node tempNode = goToNode(index);
         if (index == 0) {
             newNode.setNext(tempNode.getNext());
@@ -196,4 +181,6 @@ public class LinkedList<T> {
         size++;
     }
 
+}
+    
 }
