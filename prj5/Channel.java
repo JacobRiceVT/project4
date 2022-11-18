@@ -155,30 +155,15 @@ public class Channel {
     public int getViews() {
         return views;
     }
-
-
     /**
-     * setting the username
+     * setting the number of views
      * 
-     * @param username
-     *            the new username
+     * @param views
+     *            the new amount of views
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setViews(int views) {
+        this.views=views;
     }
-
-
-    /**
-     * setting the channel name
-     * 
-     * @param channelName
-     *            the new channelName
-     */
-    public void setChannelName(String channelName) {
-        this.channelName = channelName;
-    }
-
-
     /**
      * setting the amount of likes
      * 

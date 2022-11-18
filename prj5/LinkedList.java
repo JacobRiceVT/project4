@@ -122,7 +122,6 @@ public class LinkedList<T> {
      * clears the list
      */
     public void clear() {
-        head.setNext(null);
         head=null;
         size = 0;
     }
@@ -132,9 +131,9 @@ public class LinkedList<T> {
      *            data to be added
      */
     public void add(T data) {
-        Node add=new Node(data);
-        add.setNext(head.getNext());
-        head.setNext(add);
+        Node newNode=new Node(data);
+        newNode.setNext(head);
+        head=newNode;
         size++;
     }
     /**
@@ -183,4 +182,3 @@ public class LinkedList<T> {
 
 }
     
-}

@@ -10,7 +10,6 @@ public class Month {
      */
     private String name;
     private LinkedList<Channel> channels;
-
     /**
      * Constructor
      * 
