@@ -19,7 +19,6 @@ public class Channel {
     private int followers;
     private int comments;
     private int views;
-    private static final DecimalFormat df = new DecimalFormat(".0");
 
     /**
      * Constructor
@@ -214,6 +213,7 @@ public class Channel {
      * @return the traditional engagement rate
      */
     public double getTEngagementRate() {
+        DecimalFormat df = new DecimalFormat(".00");
         double totalEngagement = comments + likes;
         double rate = (totalEngagement / followers) * 100;
         return Double.valueOf(df.format(rate));
@@ -227,6 +227,7 @@ public class Channel {
      */
 
     public double getREngagementRate() {
+        DecimalFormat df = new DecimalFormat(".0");
         double totalEngagement = comments + likes;
         double rate = (totalEngagement / views) * 100;
         return Double.valueOf(df.format(rate));

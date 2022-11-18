@@ -27,17 +27,28 @@ public class ChannelTest extends TestCase {
     }
 
 
+    /**
+     * Tests the getUsername method
+     */
     public void testGetUsername() {
         assertEquals(c1.getUsername(), "aafootball");
         assertEquals(c2.getUsername(), "fashion22");
     }
 
 
+    /**
+     * Tests the getChannel method
+     */
+
     public void testGetChannelName() {
         assertEquals(c1.getChannelName(), "allaboutfootball");
         assertEquals(c2.getChannelName(), "fitnessandfashion");
     }
 
+
+    /**
+     * Tests the getCountry method
+     */
 
     public void testGetCountry() {
         assertEquals(c1.getCountry(), "ES");
@@ -46,11 +57,19 @@ public class ChannelTest extends TestCase {
     }
 
 
+    /**
+     * Tests the getMainTopic method
+     */
+
     public void testGetMaintTopic() {
         assertEquals(c1.getMainTopic(), "Sports");
         assertEquals(c2.getMainTopic(), "Fashion");
     }
 
+
+    /**
+     * Tests the getLikes and setLikes method
+     */
 
     public void testGetSetlikes() {
         assertEquals(c1.getLikes(), 22876452);
@@ -60,6 +79,10 @@ public class ChannelTest extends TestCase {
     }
 
 
+    /**
+     * Tests the getPosts and setPosts method
+     */
+
     public void testGetSetPosts() {
         assertEquals(c1.getPosts(), 333);
         assertEquals(c2.getPosts(), 692);
@@ -68,7 +91,11 @@ public class ChannelTest extends TestCase {
     }
 
 
-    public void testGetFollowers() {
+    /**
+     * Tests the getFollowers and setFollowers method
+     */
+
+    public void testGetSetFollowers() {
         assertEquals(c1.getFollowers(), 4650272);
         assertEquals(c2.getFollowers(), 3566876);
         c3.setFollowers(123);
@@ -76,7 +103,11 @@ public class ChannelTest extends TestCase {
     }
 
 
-    public void testGetComments() {
+    /**
+     * Tests the getComments and setComments method
+     */
+
+    public void testGetSetComments() {
         assertEquals(c1.getComments(), 518);
         assertEquals(c2.getComments(), 475);
         c3.setComments(123);
@@ -84,7 +115,11 @@ public class ChannelTest extends TestCase {
     }
 
 
-    public void testGetViews() {
+    /**
+     * Tests the getViews and setViews method
+     */
+
+    public void testGetSetViews() {
         assertEquals(c1.getViews(), 170095);
         assertEquals(c2.getViews(), 228755);
         c3.setViews(123);
@@ -92,10 +127,18 @@ public class ChannelTest extends TestCase {
     }
 
 
+    /**
+     * Tests the getTEngagementRate method
+     */
+
     public void testGetTEngagementRate() {
         assertEquals(c4.getTEngagementRate(), 118.3, .01);
     }
 
+
+    /**
+     * Tests the getREngagaementRate method
+     */
 
     public void testGetREngagaementRate() {
         assertEquals(c4.getREngagementRate(), 7.7, .01);
