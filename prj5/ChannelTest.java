@@ -1,5 +1,6 @@
 package prj5;
 
+import java.util.Arrays;
 import student.TestCase;
 
 /**
@@ -142,5 +143,26 @@ public class ChannelTest extends TestCase {
 
     public void testGetREngagaementRate() {
         assertEquals(c4.getREngagementRate(), 7.7, .01);
+    }
+    
+    /** 
+     * Tests the compareTo method 
+     */
+    public void testCompareTo() { 
+        boolean a;
+        a = (c1.compareTo(c2) < 0);  
+        assertEquals(0, c1.compareTo(c1));
+        assertTrue(a); 
+        
+        a = (c2.compareTo(c1) > 0);  
+        assertTrue(a); 
+        
+        Channel[] channels = new Channel[3]; 
+        channels[0] = c3; 
+        channels[1] = c2;
+        channels[2] = c1;
+        
+        Arrays.sort(channels);
+        assertEquals("aafootball", channels[0].getUsername()); 
     }
 }

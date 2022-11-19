@@ -6,7 +6,7 @@ package prj5;
  */
 import java.text.DecimalFormat;
 
-public class Channel {
+public class Channel implements Comparable<Channel> {
     /**
      * Fields
      */
@@ -154,6 +154,8 @@ public class Channel {
     public int getViews() {
         return views;
     }
+
+
     /**
      * setting the number of views
      * 
@@ -161,8 +163,10 @@ public class Channel {
      *            the new amount of views
      */
     public void setViews(int views) {
-        this.views=views;
+        this.views = views;
     }
+
+
     /**
      * setting the amount of likes
      * 
@@ -231,6 +235,20 @@ public class Channel {
         double totalEngagement = comments + likes;
         double rate = (totalEngagement / views) * 100;
         return Double.valueOf(df.format(rate));
+    }
+
+
+    /**
+     * 
+     * 
+     * @return int a number > 0 if the current userName String is higher
+     *         alphabetically then the other
+     *         number < 0 if the current userName String is lower alphabetically
+     *         then the other
+     */
+    @Override
+    public int compareTo(Channel chan) {
+        return (this.getUsername().compareTo(chan.getUsername()));
     }
 
 }
