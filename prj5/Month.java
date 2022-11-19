@@ -41,4 +41,13 @@ public class Month {
     public LinkedList<Channel> getChannels() {
         return channels;
     }
+    
+    /** 
+     * Gets the name
+     * 
+     * @return the name in the form of a String
+     */
+    public String getName() { 
+        return name; 
+    }
 }

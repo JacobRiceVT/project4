@@ -28,17 +28,17 @@ public class MediaCalculator {
 
 
     public LinkedList<Channel> getSortedChannelByName(LinkedList<Channel> channels) {
-        
+        return null;
     }
 
 
     public LinkedList<Channel> getSortedTraditional(LinkedList<Channel> channels) {
-
+        return null;
     }
 
 
     public LinkedList<Channel> getSortedReach(LinkedList<Channel> channels) {
-
+        return null;
     }
 
 }
