@@ -62,7 +62,6 @@ public class Input2022FReferenceTest extends student.TestCase {
 
         assertFuzzyEquals("Output not as expected for other input files "
             + ".csv", InfluencerOutput_2, systemOut().getHistory());
-
     }
 
 
