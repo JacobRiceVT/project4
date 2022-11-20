@@ -146,15 +146,15 @@ public class ChannelTest extends TestCase {
     }
     
     /** 
-     * Tests the compareTo method 
+     * Tests the compareName method 
      */
-    public void testCompareTo() { 
+    public void testCompareName() { 
         boolean a;
-        a = (c1.compareTo(c2) < 0);  
-        assertEquals(0, c1.compareTo(c1));
+        a = (c1.compareName(c2) < 0);  
+        assertEquals(0, c1.compareName(c1));
         assertTrue(a); 
         
-        a = (c2.compareTo(c1) > 0);  
+        a = (c2.compareName(c1) > 0);  
         assertTrue(a); 
         
         Channel[] channels = new Channel[3]; 
@@ -162,7 +162,5 @@ public class ChannelTest extends TestCase {
         channels[1] = c2;
         channels[2] = c1;
         
-        Arrays.sort(channels);
-        assertEquals("aafootball", channels[0].getUsername()); 
     }
 }

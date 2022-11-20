@@ -9,7 +9,7 @@ public class Month {
      * Fields
      */
     private String name;
-    private LinkedList<Channel> channels;
+    private LinkedList channels;
     /**
      * Constructor
      * 
@@ -18,7 +18,7 @@ public class Month {
      */
     public Month(String name) {
         this.name = name;
-        channels = new LinkedList<Channel>();
+        channels = new LinkedList();
     }
 
 
@@ -38,7 +38,7 @@ public class Month {
      * 
      * @return the list of channels of this month
      */
-    public LinkedList<Channel> getChannels() {
+    public LinkedList getChannels() {
         return channels;
     }
     

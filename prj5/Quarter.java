@@ -11,10 +11,10 @@ public class Quarter {
     private Month month1;
     private Month month2;
     private Month month3;
-    private LinkedList<Channel> month1Channels;
-    private LinkedList<Channel> month2Channels;
-    private LinkedList<Channel> month3Channels;
-    private LinkedList<Channel> quarterChannels;
+    private LinkedList month1Channels;
+    private LinkedList month2Channels;
+    private LinkedList month3Channels;
+    private LinkedList quarterChannels;
 
     /**
      * Constructor
@@ -33,7 +33,7 @@ public class Quarter {
         month1Channels = month1.getChannels();
         month2Channels = month2.getChannels();
         month3Channels = month3.getChannels();
-        quarterChannels = new LinkedList<Channel>();
+        quarterChannels = new LinkedList();
         addMonthlyChannels(month1Channels);
         addMonthlyChannels(month2Channels);
         addMonthlyChannels(month3Channels);
@@ -60,7 +60,7 @@ public class Quarter {
     /**
      * adding the channels in the months to the general channels of the quarter
      */
-    private void addMonthlyChannels(LinkedList<Channel> monthChannels) {
+    private void addMonthlyChannels(LinkedList monthChannels) {
         for (int i = 0; i < monthChannels.size(); i++) {
             Channel channel = monthChannels.get(i);
             int existsIndex = getIndexOf(channel);
@@ -85,7 +85,7 @@ public class Quarter {
      * 
      * @return quarteChannels
      */
-    public LinkedList<Channel> getQuarterChannels() {
+    public LinkedList getQuarterChannels() {
         return quarterChannels;
     }
 }
