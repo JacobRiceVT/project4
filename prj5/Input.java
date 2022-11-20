@@ -115,18 +115,25 @@ public class Input {
      * The project runner method
      */
     public static void main(String[] strings) {
-        MediaCalculator calc=new MediaCalculator("SampleInput1_2022.csv");
-        if(strings.length!=0) {
-            calc = new MediaCalculator(strings[0]);
+        MediaCalculator input = new MediaCalculator("SampleInput1_2022.csv");
+        if (strings.length != 0) {
+            input = new MediaCalculator(strings[0]);
         }
-        Quarter quarter1 = calc.getQuarter();
+        Quarter quarter1 = input.getQuarter();
         LinkedList quarterChannels = quarter1.getQuarterChannels();
         quarterChannels.sortByName();
         for (int i = 0; i < quarterChannels.size(); i++) {
             Channel channel = quarterChannels.get(i);
             System.out.println(channel.getChannelName());
-            System.out.println("traditional: " + channel.getTEngagementRate());
-            System.out.println("==========");
+            double traditionalRate = channel.getTEngagementRate();
+            if (traditionalRate == 0) {
+                System.out.println("traditional: " + "N/A");
+                System.out.println("==========");
+            }
+            else {
+                System.out.println("traditional: " + traditionalRate);
+                System.out.println("==========");
+            }
         }
         System.out.println("**********\r\n" + "**********");
         quarterChannels.sortByReachRate();

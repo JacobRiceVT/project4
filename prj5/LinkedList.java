@@ -4,8 +4,6 @@ package prj5;
  * 
  * @author Jacob Rice
  * @version 11.17.22
- * @param <Channel>
- *            Channel objects
  */
 
 public class LinkedList {
@@ -34,22 +32,6 @@ public class LinkedList {
 
 
         /**
-         * Constructor
-         * 
-         * @param newdata
-         *            new data for new node
-         * @param nextNode
-         *            next Node
-         */
-
-        public Node(Channel newdata, Node nextNode) {
-            data = newdata;
-            next = nextNode;
-
-        }
-
-
-        /**
          * Setting next node
          * 
          * @param nextNode
@@ -58,17 +40,6 @@ public class LinkedList {
 
         public void setNext(Node nextNode) {
             next = nextNode;
-        }
-
-
-        /**
-         * Setting data
-         * 
-         * @param newdata
-         *            new data for node
-         */
-        public void setData(Channel newdata) {
-            data = newdata;
         }
 
 
@@ -143,7 +114,6 @@ public class LinkedList {
      *            index to go to
      * @return raw data
      */
-    @SuppressWarnings("unchecked")
     public Channel get(int index) {
         return goToNode(index).getData();
     }
@@ -154,7 +124,7 @@ public class LinkedList {
      *            index to go to
      * @return a node, returns null when index is not positive.
      */
-    public Node goToNode(int index) {
+    private Node goToNode(int index) {
         if (index >= 0) {
             Node iterator = head;
             for (int i = 0; i < index; i++) {
@@ -163,28 +133,6 @@ public class LinkedList {
             return iterator;
         }
         return null;
-    }
-
-
-    /**
-     * @param index
-     *            index to search
-     * @param data
-     *            data to be added
-     */
-    public void add(int index, Channel data) {
-        Node newNode = new Node(data);
-        Node tempNode = goToNode(index);
-        if (index == 0) {
-            newNode.setNext(tempNode.getNext());
-            head = newNode;
-        }
-        else {
-
-            newNode.setNext(tempNode);
-            goToNode(index - 1).setNext(newNode);
-        }
-        size++;
     }
 
 
@@ -255,7 +203,7 @@ public class LinkedList {
         Node currentNode = head;
         Node previousNode = null;
         while ((currentNode != null) && (item.compareTraditional(currentNode
-            .getData()) > 0)) {
+            .getData()) < 0)) {
             previousNode = currentNode;
             currentNode = currentNode.getNext();
         }
@@ -296,7 +244,7 @@ public class LinkedList {
         Node currentNode = head;
         Node previousNode = null;
         while ((currentNode != null) && (item.compareReach(currentNode
-            .getData()) > 0)) {
+            .getData()) < 0)) {
             previousNode = currentNode;
             currentNode = currentNode.getNext();
         }

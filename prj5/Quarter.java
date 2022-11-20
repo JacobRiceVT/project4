@@ -8,12 +8,7 @@ public class Quarter {
     /**
      * Fields
      */
-    private Month month1;
-    private Month month2;
-    private Month month3;
-    private LinkedList month1Channels;
-    private LinkedList month2Channels;
-    private LinkedList month3Channels;
+
     private LinkedList quarterChannels;
 
     /**
@@ -27,12 +22,9 @@ public class Quarter {
      *            the third month of the quarter
      */
     public Quarter(Month month1, Month month2, Month month3) {
-        this.month1 = month1;
-        this.month2 = month2;
-        this.month3 = month3;
-        month1Channels = month1.getChannels();
-        month2Channels = month2.getChannels();
-        month3Channels = month3.getChannels();
+        LinkedList month1Channels = month1.getChannels();
+        LinkedList month2Channels = month2.getChannels();
+        LinkedList month3Channels = month3.getChannels();
         quarterChannels = new LinkedList();
         addMonthlyChannels(month1Channels);
         addMonthlyChannels(month2Channels);

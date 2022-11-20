@@ -19,4 +19,11 @@ public class MediaCalculatorTest extends TestCase {
         mc = new MediaCalculator("SampleInput1_2022.csv");
     }
 
+    /**
+     * test getQuarter method
+     */
+    public void testGetQuarter() {
+        assertEquals(mc.getQuarter(), mc.getQuarter());
+    }
+
 }

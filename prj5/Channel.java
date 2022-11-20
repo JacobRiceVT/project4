@@ -1,11 +1,11 @@
 package prj5;
 
+import java.text.DecimalFormat;
+
 /**
  * @author Jung Chang
  * @version 11.17.22
  */
-import java.text.DecimalFormat;
-
 public class Channel {
     /**
      * Fields
@@ -19,7 +19,7 @@ public class Channel {
     private int followers;
     private int comments;
     private int views;
-    private final static DecimalFormat df = new DecimalFormat(".0");;
+    private static final DecimalFormat DF = new DecimalFormat(".0");
 
     /**
      * Constructor
@@ -219,8 +219,11 @@ public class Channel {
      */
     public double getTEngagementRate() {
         double totalEngagement = comments + likes;
-        double rate = (totalEngagement / followers) * 100;
-        return Double.valueOf(df.format(rate));
+        double rate = 0;
+        if (followers != 0) {
+            rate = (totalEngagement / followers) * 100;
+        }
+        return Double.valueOf(DF.format(rate));
     }
 
 
@@ -233,13 +236,14 @@ public class Channel {
     public double getREngagementRate() {
         double totalEngagement = comments + likes;
         double rate = (totalEngagement / views) * 100;
-        return Double.valueOf(df.format(rate));
+        return Double.valueOf(DF.format(rate));
     }
 
 
     /**
      * 
-     * 
+     * @param chan
+     *            Channel being compared
      * @return int a number > 0 if the current userName String is higher
      *         alphabetically than the other
      *         number < 0 if the current userName String is lower alphabetically
@@ -253,7 +257,8 @@ public class Channel {
 
     /**
      * 
-     * 
+     * @param chan
+     *            Channel being compared
      * @return int a number > 0 if the current userName traditional engagement
      *         rate is higher
      *         than the other
@@ -262,17 +267,21 @@ public class Channel {
      *         then the other
      */
     public int compareTraditional(Channel chan) {
-        if (this.getTEngagementRate() < chan.getTEngagementRate())
+        if (this.getTEngagementRate() < chan.getTEngagementRate()) {
             return -1;
-        if (this.getTEngagementRate() > chan.getTEngagementRate())
+        }
+
+        if (this.getTEngagementRate() > chan.getTEngagementRate()) {
             return 1;
+        }
         return (0);
     }
 
 
     /**
      * 
-     * 
+     * @param chan
+     *            Channel being compared
      * @return int a number > 0 if the current userName reach engagement rate is
      *         higher
      *         than the other
@@ -280,10 +289,13 @@ public class Channel {
      *         then the other
      */
     public int compareReach(Channel chan) {
-        if (this.getREngagementRate() < chan.getREngagementRate())
+        if (this.getREngagementRate() < chan.getREngagementRate()) {
             return -1;
-        if (this.getREngagementRate() > chan.getREngagementRate())
+        }
+
+        if (this.getREngagementRate() > chan.getREngagementRate()) {
             return 1;
+        }
         return (0);
     }
 

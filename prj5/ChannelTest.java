@@ -11,6 +11,7 @@ public class ChannelTest extends TestCase {
     private Channel c2;
     private Channel c3;
     private Channel c4;
+    private Channel c5;
 
     /**
      * sets up the test cases
@@ -24,6 +25,8 @@ public class ChannelTest extends TestCase {
             3470330, 470, 117616);
         c4 = new Channel("actionDan", "wizardHigh", "US", "education", 127499,
             1767, 120343, 14861, 1852612);
+        c5 = new Channel("actionDan", "wizardHigh", "US", "education", 127499,
+            1767, 0, 14861, 1852612);
     }
 
 
@@ -133,6 +136,7 @@ public class ChannelTest extends TestCase {
 
     public void testGetTEngagementRate() {
         assertEquals(c4.getTEngagementRate(), 118.3, .01);
+        assertEquals(c5.getTEngagementRate(), 0, 0.01);
     }
 
 
@@ -162,5 +166,21 @@ public class ChannelTest extends TestCase {
         channels[1] = c2;
         channels[2] = c1;
 
+    }
+
+
+    /**
+     * Tests the compareTraditional method
+     */
+    public void testCompareTraditional() {
+        assertEquals(c1.compareTraditional(c2), -1);
+    }
+
+
+    /**
+     * Tests the compareReach method
+     */
+    public void testCompareReach() {
+        assertEquals(c1.compareReach(c2), -1);
     }
 }
