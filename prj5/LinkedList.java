@@ -205,6 +205,7 @@ public class LinkedList {
         }
     }
 
+
     /**
      * insert the nodes in order by name
      */
@@ -212,7 +213,8 @@ public class LinkedList {
         Channel item = nodeToInsert.getData();
         Node currentNode = head;
         Node previousNode = null;
-        while ((currentNode != null)&&(item.compareName(currentNode.getData())<0)) {
+        while ((currentNode != null) && (item.compareName(currentNode
+            .getData()) < 0)) {
             previousNode = currentNode;
             currentNode = currentNode.getNext();
         }
@@ -225,6 +227,8 @@ public class LinkedList {
             head = nodeToInsert;
         }
     }
+
+
     /**
      * sort the nodes by traditionalRate
      */
@@ -242,6 +246,7 @@ public class LinkedList {
         }
     }
 
+
     /**
      * insert the nodes in order by traditional rate
      */
@@ -249,7 +254,8 @@ public class LinkedList {
         Channel item = nodeToInsert.getData();
         Node currentNode = head;
         Node previousNode = null;
-        while ((currentNode != null)&&(item.compareTraditional(currentNode.getData())>0)) {
+        while ((currentNode != null) && (item.compareTraditional(currentNode
+            .getData()) > 0)) {
             previousNode = currentNode;
             currentNode = currentNode.getNext();
         }
@@ -262,6 +268,8 @@ public class LinkedList {
             head = nodeToInsert;
         }
     }
+
+
     /**
      * insert the nodes in order by reach rate
      */
@@ -279,6 +287,7 @@ public class LinkedList {
         }
     }
 
+
     /**
      * insert the nodes in order By reach rate
      */
@@ -286,7 +295,8 @@ public class LinkedList {
         Channel item = nodeToInsert.getData();
         Node currentNode = head;
         Node previousNode = null;
-        while ((currentNode != null)&&(item.compareReach(currentNode.getData())>0)) {
+        while ((currentNode != null) && (item.compareReach(currentNode
+            .getData()) > 0)) {
             previousNode = currentNode;
             currentNode = currentNode.getNext();
         }
@@ -299,6 +309,5 @@ public class LinkedList {
             head = nodeToInsert;
         }
     }
-
 
 }

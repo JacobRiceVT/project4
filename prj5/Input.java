@@ -110,12 +110,14 @@ public class Input {
         file.close();
     }
 
+
     /**
      * The project runner method
      */
     public static void main(String[] strings) {
         MediaCalculator calc = new MediaCalculator("SampleInput1_2022.csv");
-        Quarter quarter1 = calc.getQuarter();;
+        Quarter quarter1 = calc.getQuarter();
+        ;
         LinkedList quarterChannels = quarter1.getQuarterChannels();
         quarterChannels.sortByName();
         for (int i = 0; i < quarterChannels.size(); i++) {

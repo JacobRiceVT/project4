@@ -10,6 +10,7 @@ public class Month {
      */
     private String name;
     private LinkedList channels;
+
     /**
      * Constructor
      * 
@@ -41,13 +42,14 @@ public class Month {
     public LinkedList getChannels() {
         return channels;
     }
-    
-    /** 
+
+
+    /**
      * Gets the name
      * 
      * @return the name in the form of a String
      */
-    public String getName() { 
-        return name; 
+    public String getName() {
+        return name;
     }
 }

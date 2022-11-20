@@ -38,7 +38,8 @@ public class Quarter {
         addMonthlyChannels(month2Channels);
         addMonthlyChannels(month3Channels);
     }
-    
+
+
     /**
      * checking if a Channel exists in the quarterChannels list
      * 
@@ -55,7 +56,6 @@ public class Quarter {
         return -1;
     }
 
-    
 
     /**
      * adding the channels in the months to the general channels of the quarter

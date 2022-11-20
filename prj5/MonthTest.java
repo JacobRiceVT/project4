@@ -29,12 +29,14 @@ public class MonthTest extends TestCase {
         c4 = new Channel("actionDan", "wizardHigh", "US", "education", 127499,
             1767, 120343, 14861, 1852612);
     }
+
+
     /**
      * Tests the addChannel and getChannel method
      */
     public void testAddGetChannel() {
         january.addChannel(c1);
         january.addChannel(c2);
-        assertEquals(january.getChannels().size(),2);
+        assertEquals(january.getChannels().size(), 2);
     }
 }

@@ -17,7 +17,6 @@ public class MediaCalculator {
     private Quarter quarter;
     private Input reader;
 
-
     /**
      * Constructor
      * 
@@ -32,6 +31,8 @@ public class MediaCalculator {
         month3 = months[2];
         quarter = new Quarter(month1, month2, month3);
     }
+
+
     /**
      * Tests the getQuarter method
      */

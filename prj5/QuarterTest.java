@@ -1,6 +1,7 @@
 package prj5;
 
 import student.TestCase;
+
 /**
  * @author Jung Chang
  * @version 11.17.22
@@ -57,9 +58,9 @@ public class QuarterTest extends TestCase {
             228260, 0, 8300936, 0, 0);
         ArtAllDay3 = new Channel("mangledPixel", "ArtAllDay", "CA", "art",
             958214, 654, 7320935, 455632, 42587177);
-        january=new Month("January");
-        february=new Month("February");
-        march=new Month("March");
+        january = new Month("January");
+        february = new Month("February");
+        march = new Month("March");
         january.addChannel(wizardHigh1);
         january.addChannel(justBeatz1);
         january.addChannel(australian_wildlife1);
@@ -72,21 +73,23 @@ public class QuarterTest extends TestCase {
         march.addChannel(justBeatz3);
         march.addChannel(australian_wildlife3);
         march.addChannel(ArtAllDay3);
-        quarter=new Quarter(january,february,march);
+        quarter = new Quarter(january, february, march);
     }
+
+
     /**
      * Tests the getQuartChannel method
      */
     public void testGetQuarterChannel() {
-        LinkedList quarterChannels=quarter.getQuarterChannels();
-        assertEquals(quarterChannels.size(),4);
-        assertEquals(quarterChannels.get(3).getTEngagementRate(),41.1,.01);
-        assertEquals(quarterChannels.get(2).getTEngagementRate(),34.6,.01);
-        assertEquals(quarterChannels.get(1).getTEngagementRate(),171.1,.01);
-        assertEquals(quarterChannels.get(0).getTEngagementRate(),118.3,.01);
-        assertEquals(quarterChannels.get(3).getREngagementRate(),4.6,.1);
-        assertEquals(quarterChannels.get(2).getREngagementRate(),3.5,.1);
-        assertEquals(quarterChannels.get(1).getREngagementRate(),13.2,.1);
-        assertEquals(quarterChannels.get(0).getREngagementRate(),7.7,.1);   
+        LinkedList quarterChannels = quarter.getQuarterChannels();
+        assertEquals(quarterChannels.size(), 4);
+        assertEquals(quarterChannels.get(3).getTEngagementRate(), 41.1, .01);
+        assertEquals(quarterChannels.get(2).getTEngagementRate(), 34.6, .01);
+        assertEquals(quarterChannels.get(1).getTEngagementRate(), 171.1, .01);
+        assertEquals(quarterChannels.get(0).getTEngagementRate(), 118.3, .01);
+        assertEquals(quarterChannels.get(3).getREngagementRate(), 4.6, .1);
+        assertEquals(quarterChannels.get(2).getREngagementRate(), 3.5, .1);
+        assertEquals(quarterChannels.get(1).getREngagementRate(), 13.2, .1);
+        assertEquals(quarterChannels.get(0).getREngagementRate(), 7.7, .1);
     }
 }

@@ -19,7 +19,7 @@ public class Channel {
     private int followers;
     private int comments;
     private int views;
-    private final static  DecimalFormat df =new DecimalFormat(".0");;
+    private final static DecimalFormat df = new DecimalFormat(".0");;
 
     /**
      * Constructor
@@ -246,35 +246,43 @@ public class Channel {
      *         then the other
      */
     public int compareName(Channel chan) {
-        return (this.getUsername().toLowerCase().compareTo(chan.getUsername().toLowerCase()));
+        return (this.getUsername().toLowerCase().compareTo(chan.getUsername()
+            .toLowerCase()));
     }
+
+
     /**
      * 
      * 
-     * @return int a number > 0 if the current userName traditional engagement rate is higher
+     * @return int a number > 0 if the current userName traditional engagement
+     *         rate is higher
      *         than the other
-     *         number < 0 if the current userName traditional engagement rate is lower 
+     *         number < 0 if the current userName traditional engagement rate is
+     *         lower
      *         then the other
      */
-    public int compareTraditional(Channel chan){
-        if(this.getTEngagementRate()<chan.getTEngagementRate())
+    public int compareTraditional(Channel chan) {
+        if (this.getTEngagementRate() < chan.getTEngagementRate())
             return -1;
-        if(this.getTEngagementRate()>chan.getTEngagementRate())
+        if (this.getTEngagementRate() > chan.getTEngagementRate())
             return 1;
         return (0);
     }
+
+
     /**
      * 
      * 
-     * @return int a number > 0 if the current userName reach engagement rate is higher
+     * @return int a number > 0 if the current userName reach engagement rate is
+     *         higher
      *         than the other
-     *         number < 0 if the current userName reach engagement rate is lower 
+     *         number < 0 if the current userName reach engagement rate is lower
      *         then the other
      */
-    public int compareReach(Channel chan){
-        if(this.getREngagementRate()<chan.getREngagementRate())
+    public int compareReach(Channel chan) {
+        if (this.getREngagementRate() < chan.getREngagementRate())
             return -1;
-        if(this.getREngagementRate()>chan.getREngagementRate())
+        if (this.getREngagementRate() > chan.getREngagementRate())
             return 1;
         return (0);
     }
