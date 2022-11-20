@@ -115,7 +115,7 @@ public class Input {
      */
     public static void main(String[] strings) {
         MediaCalculator calc = new MediaCalculator("SampleInput1_2022.csv");
-        Quarter quarter1 = calc.getQuarter();
+        Quarter quarter1 = calc.getQuarter();;
         LinkedList quarterChannels = quarter1.getQuarterChannels();
         quarterChannels.sortByName();
         for (int i = 0; i < quarterChannels.size(); i++) {
@@ -127,9 +127,9 @@ public class Input {
         System.out.println("**********\r\n" + "**********");
         quarterChannels.sortByReachRate();
         for (int i = 0; i < quarterChannels.size(); i++) {
-            Channel channel2 = quarterChannels.get(i);
-            System.out.println(channel2.getChannelName());
-            System.out.println("reach: " + channel2.getREngagementRate());
+            Channel channel = quarterChannels.get(i);
+            System.out.println(channel.getChannelName());
+            System.out.println("reach: " + channel.getREngagementRate());
             System.out.println("==========");
         }
     }
