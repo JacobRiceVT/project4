@@ -4,24 +4,21 @@ package prj5;
  * 
  * @author Jacob Rice
  * @version 11.17.22
- * @param <T>
- *            objects
  */
 
-public class LinkedList<T> {
+public class LinkedList {
     /**
      *
      * @author Jacob Rice
      *
-     * @param <E>
      */
-    private static class Node<E> {
+    private static class Node {
 
         /**
          * Fields
          */
-        private Node<E> next;
-        private E data;
+        private Node next;
+        private Channel data;
 
         /**
          * Constructor
@@ -29,24 +26,8 @@ public class LinkedList<T> {
          * @param newdata
          *            new data for new node
          */
-        public Node(E newdata) {
+        public Node(Channel newdata) {
             data = newdata;
-        }
-
-
-        /**
-         * Constructor
-         * 
-         * @param newdata
-         *            new data for new node
-         * @param nextNode
-         *            next Node
-         */
-
-        public Node(E newdata, Node<E> nextNode) {
-            data = newdata;
-            next = nextNode;
-
         }
 
 
@@ -57,19 +38,8 @@ public class LinkedList<T> {
          *            new next node
          */
 
-        public void setNext(Node<E> nextNode) {
+        public void setNext(Node nextNode) {
             next = nextNode;
-        }
-
-
-        /**
-         * Setting data
-         * 
-         * @param newdata
-         *            new data for node
-         */
-        public void setData(E newdata) {
-            data = newdata;
         }
 
 
@@ -78,7 +48,7 @@ public class LinkedList<T> {
          * 
          * @return next Next node.
          */
-        public Node<E> getNext() {
+        public Node getNext() {
             return next;
         }
 
@@ -88,7 +58,7 @@ public class LinkedList<T> {
          * 
          * @return data current node data
          */
-        public E getData() {
+        public Channel getData() {
             return data;
         }
 
@@ -122,34 +92,39 @@ public class LinkedList<T> {
      * clears the list
      */
     public void clear() {
-        head=null;
+        head = null;
         size = 0;
     }
+
 
     /**
      * @param data
      *            data to be added
      */
-    public void add(T data) {
-        Node newNode=new Node(data);
+    public void add(Channel data) {
+        Node newNode = new Node(data);
         newNode.setNext(head);
-        head=newNode;
+        head = newNode;
         size++;
     }
+
+
     /**
      * @param index
      *            index to go to
      * @return raw data
      */
-    public T get(int index) {
-        return (T)goToNode(index).getData();
+    public Channel get(int index) {
+        return goToNode(index).getData();
     }
+
+
     /**
      * @param index
      *            index to go to
      * @return a node, returns null when index is not positive.
      */
-    public Node goToNode(int index) {
+    private Node goToNode(int index) {
         if (index >= 0) {
             Node iterator = head;
             for (int i = 0; i < index; i++) {
@@ -159,26 +134,128 @@ public class LinkedList<T> {
         }
         return null;
     }
+
+
     /**
-     * @param index
-     *            index to search
-     * @param data
-     *            data to be added
+     * sort the nodes by name
      */
-    public void add(int index, T data) {
-        Node newNode=new Node(data);
-        Node tempNode = goToNode(index);
-        if (index == 0) {
-            newNode.setNext(tempNode.getNext());
-            head = newNode;
+    public void sortByName() {
+        if (size > 1) {
+            Node unsortedPart = head.getNext();
+            Node sortedpart = head;
+            sortedpart.setNext(null);
+            while (unsortedPart != null) {
+                Node nodeToInsert = unsortedPart;
+                unsortedPart = unsortedPart.getNext();
+                insertInOrderByName(nodeToInsert);
+
+            }
+        }
+    }
+
+
+    /**
+     * insert the nodes in order by name
+     */
+    private void insertInOrderByName(Node nodeToInsert) {
+        Channel item = nodeToInsert.getData();
+        Node currentNode = head;
+        Node previousNode = null;
+        while ((currentNode != null) && (item.compareName(currentNode
+            .getData()) < 0)) {
+            previousNode = currentNode;
+            currentNode = currentNode.getNext();
+        }
+        if (previousNode != null) {
+            previousNode.setNext(nodeToInsert);
+            nodeToInsert.setNext(currentNode);
         }
         else {
-
-            newNode.setNext(tempNode);
-            goToNode(index - 1).setNext(newNode);
+            nodeToInsert.setNext(head);
+            head = nodeToInsert;
         }
-        size++;
+    }
+
+
+    /**
+     * sort the nodes by traditionalRate
+     */
+    public void sortByTraditionalRate() {
+        if (size > 1) {
+            Node unsortedPart = head.getNext();
+            Node sortedpart = head;
+            sortedpart.setNext(null);
+            while (unsortedPart != null) {
+                Node nodeToInsert = unsortedPart;
+                unsortedPart = unsortedPart.getNext();
+                insertInOrderByTraditionalRate(nodeToInsert);
+
+            }
+        }
+    }
+
+
+    /**
+     * insert the nodes in order by traditional rate
+     */
+    private void insertInOrderByTraditionalRate(Node nodeToInsert) {
+        Channel item = nodeToInsert.getData();
+        Node currentNode = head;
+        Node previousNode = null;
+        while ((currentNode != null) && (item.compareTraditional(currentNode
+            .getData()) < 0)) {
+            previousNode = currentNode;
+            currentNode = currentNode.getNext();
+        }
+        if (previousNode != null) {
+            previousNode.setNext(nodeToInsert);
+            nodeToInsert.setNext(currentNode);
+        }
+        else {
+            nodeToInsert.setNext(head);
+            head = nodeToInsert;
+        }
+    }
+
+
+    /**
+     * insert the nodes in order by reach rate
+     */
+    public void sortByReachRate() {
+        if (size > 1) {
+            Node unsortedPart = head.getNext();
+            Node sortedpart = head;
+            sortedpart.setNext(null);
+            while (unsortedPart != null) {
+                Node nodeToInsert = unsortedPart;
+                unsortedPart = unsortedPart.getNext();
+                insertInOrderByReachRate(nodeToInsert);
+
+            }
+        }
+    }
+
+
+    /**
+     * insert the nodes in order By reach rate
+     */
+    private void insertInOrderByReachRate(Node nodeToInsert) {
+        Channel item = nodeToInsert.getData();
+        Node currentNode = head;
+        Node previousNode = null;
+        while ((currentNode != null) && (item.compareReach(currentNode
+            .getData()) < 0)) {
+            previousNode = currentNode;
+            currentNode = currentNode.getNext();
+        }
+        if (previousNode != null) {
+            previousNode.setNext(nodeToInsert);
+            nodeToInsert.setNext(currentNode);
+        }
+        else {
+            nodeToInsert.setNext(head);
+            head = nodeToInsert;
+        }
     }
 
 }
-    

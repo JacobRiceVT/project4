@@ -1,12 +1,12 @@
 package prj5;
 
+import java.text.DecimalFormat;
+
 /**
  * @author Jung Chang
  * @version 11.17.22
  */
-import java.text.DecimalFormat;
-
-public class Channel implements Comparable<Channel> {
+public class Channel {
     /**
      * Fields
      */
@@ -19,6 +19,7 @@ public class Channel implements Comparable<Channel> {
     private int followers;
     private int comments;
     private int views;
+    private static final DecimalFormat DF = new DecimalFormat(".0");
 
     /**
      * Constructor
@@ -217,10 +218,12 @@ public class Channel implements Comparable<Channel> {
      * @return the traditional engagement rate
      */
     public double getTEngagementRate() {
-        DecimalFormat df = new DecimalFormat(".00");
         double totalEngagement = comments + likes;
-        double rate = (totalEngagement / followers) * 100;
-        return Double.valueOf(df.format(rate));
+        double rate = 0;
+        if (followers != 0) {
+            rate = (totalEngagement / followers) * 100;
+        }
+        return Double.valueOf(DF.format(rate));
     }
 
 
@@ -231,24 +234,69 @@ public class Channel implements Comparable<Channel> {
      */
 
     public double getREngagementRate() {
-        DecimalFormat df = new DecimalFormat(".0");
         double totalEngagement = comments + likes;
         double rate = (totalEngagement / views) * 100;
-        return Double.valueOf(df.format(rate));
+        return Double.valueOf(DF.format(rate));
     }
 
 
     /**
      * 
-     * 
+     * @param chan
+     *            Channel being compared
      * @return int a number > 0 if the current userName String is higher
-     *         alphabetically then the other
+     *         alphabetically than the other
      *         number < 0 if the current userName String is lower alphabetically
      *         then the other
      */
-    @Override
-    public int compareTo(Channel chan) {
-        return (this.getUsername().compareTo(chan.getUsername()));
+    public int compareName(Channel chan) {
+        return (this.getUsername().toLowerCase().compareTo(chan.getUsername()
+            .toLowerCase()));
+    }
+
+
+    /**
+     * 
+     * @param chan
+     *            Channel being compared
+     * @return int a number > 0 if the current userName traditional engagement
+     *         rate is higher
+     *         than the other
+     *         number < 0 if the current userName traditional engagement rate is
+     *         lower
+     *         then the other
+     */
+    public int compareTraditional(Channel chan) {
+        if (this.getTEngagementRate() < chan.getTEngagementRate()) {
+            return -1;
+        }
+
+        if (this.getTEngagementRate() > chan.getTEngagementRate()) {
+            return 1;
+        }
+        return (0);
+    }
+
+
+    /**
+     * 
+     * @param chan
+     *            Channel being compared
+     * @return int a number > 0 if the current userName reach engagement rate is
+     *         higher
+     *         than the other
+     *         number < 0 if the current userName reach engagement rate is lower
+     *         then the other
+     */
+    public int compareReach(Channel chan) {
+        if (this.getREngagementRate() < chan.getREngagementRate()) {
+            return -1;
+        }
+
+        if (this.getREngagementRate() > chan.getREngagementRate()) {
+            return 1;
+        }
+        return (0);
     }
 
 }

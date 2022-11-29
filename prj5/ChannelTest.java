@@ -1,6 +1,5 @@
 package prj5;
 
-import java.util.Arrays;
 import student.TestCase;
 
 /**
@@ -12,6 +11,7 @@ public class ChannelTest extends TestCase {
     private Channel c2;
     private Channel c3;
     private Channel c4;
+    private Channel c5;
 
     /**
      * sets up the test cases
@@ -25,6 +25,8 @@ public class ChannelTest extends TestCase {
             3470330, 470, 117616);
         c4 = new Channel("actionDan", "wizardHigh", "US", "education", 127499,
             1767, 120343, 14861, 1852612);
+        c5 = new Channel("actionDan", "wizardHigh", "US", "education", 127499,
+            1767, 0, 14861, 1852612);
     }
 
 
@@ -134,6 +136,7 @@ public class ChannelTest extends TestCase {
 
     public void testGetTEngagementRate() {
         assertEquals(c4.getTEngagementRate(), 118.3, .01);
+        assertEquals(c5.getTEngagementRate(), 0, 0.01);
     }
 
 
@@ -144,25 +147,40 @@ public class ChannelTest extends TestCase {
     public void testGetREngagaementRate() {
         assertEquals(c4.getREngagementRate(), 7.7, .01);
     }
-    
-    /** 
-     * Tests the compareTo method 
+
+
+    /**
+     * Tests the compareName method
      */
-    public void testCompareTo() { 
+    public void testCompareName() {
         boolean a;
-        a = (c1.compareTo(c2) < 0);  
-        assertEquals(0, c1.compareTo(c1));
-        assertTrue(a); 
-        
-        a = (c2.compareTo(c1) > 0);  
-        assertTrue(a); 
-        
-        Channel[] channels = new Channel[3]; 
-        channels[0] = c3; 
+        a = (c1.compareName(c2) < 0);
+        assertEquals(0, c1.compareName(c1));
+        assertTrue(a);
+
+        a = (c2.compareName(c1) > 0);
+        assertTrue(a);
+
+        Channel[] channels = new Channel[3];
+        channels[0] = c3;
         channels[1] = c2;
         channels[2] = c1;
-        
-        Arrays.sort(channels);
-        assertEquals("aafootball", channels[0].getUsername()); 
+
+    }
+
+
+    /**
+     * Tests the compareTraditional method
+     */
+    public void testCompareTraditional() {
+        assertEquals(c1.compareTraditional(c2), -1);
+    }
+
+
+    /**
+     * Tests the compareReach method
+     */
+    public void testCompareReach() {
+        assertEquals(c1.compareReach(c2), -1);
     }
 }

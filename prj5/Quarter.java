@@ -8,13 +8,8 @@ public class Quarter {
     /**
      * Fields
      */
-    private Month month1;
-    private Month month2;
-    private Month month3;
-    private LinkedList<Channel> month1Channels;
-    private LinkedList<Channel> month2Channels;
-    private LinkedList<Channel> month3Channels;
-    private LinkedList<Channel> quarterChannels;
+
+    private LinkedList quarterChannels;
 
     /**
      * Constructor
@@ -27,18 +22,16 @@ public class Quarter {
      *            the third month of the quarter
      */
     public Quarter(Month month1, Month month2, Month month3) {
-        this.month1 = month1;
-        this.month2 = month2;
-        this.month3 = month3;
-        month1Channels = month1.getChannels();
-        month2Channels = month2.getChannels();
-        month3Channels = month3.getChannels();
-        quarterChannels = new LinkedList<Channel>();
+        LinkedList month1Channels = month1.getChannels();
+        LinkedList month2Channels = month2.getChannels();
+        LinkedList month3Channels = month3.getChannels();
+        quarterChannels = new LinkedList();
         addMonthlyChannels(month1Channels);
         addMonthlyChannels(month2Channels);
         addMonthlyChannels(month3Channels);
     }
-    
+
+
     /**
      * checking if a Channel exists in the quarterChannels list
      * 
@@ -55,12 +48,11 @@ public class Quarter {
         return -1;
     }
 
-    
 
     /**
      * adding the channels in the months to the general channels of the quarter
      */
-    private void addMonthlyChannels(LinkedList<Channel> monthChannels) {
+    private void addMonthlyChannels(LinkedList monthChannels) {
         for (int i = 0; i < monthChannels.size(); i++) {
             Channel channel = monthChannels.get(i);
             int existsIndex = getIndexOf(channel);
@@ -85,7 +77,7 @@ public class Quarter {
      * 
      * @return quarteChannels
      */
-    public LinkedList<Channel> getQuarterChannels() {
+    public LinkedList getQuarterChannels() {
         return quarterChannels;
     }
 }
