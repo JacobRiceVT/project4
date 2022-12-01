@@ -293,9 +293,7 @@ public class MediaGUI {
      */
     public void displayData(int monthChoice, int sortChoice) {
         
-        int barWidth=30;
-        int barSpace=100;
-        int barHeight=100;
+        int tempWindowWidth=0;
         Object sortedData=sortData(monthChoice, sortChoice);
         String barString="Missing data!";
         
@@ -303,37 +301,53 @@ public class MediaGUI {
         if (sortedData.getClass()==calculator.getMonth1().getClass()) {
             
             Month monthData=(Month)sortedData;
-            
+            mediaWindow.removeAllShapes();
+            refreshText();
 
         
-
             
             
             
             for(int i=0;i<monthData.getChannels().size();i++) {
                 
+                
+                int barSpace=150;
+                
+                int barWidth=30;
+                int barHeight=2;
+                
+                tempWindowWidth+=barSpace*2;
+                
+                
                     if (sortChoice != 0) {
                         switch (sortChoice) {
                             case 1:
                                 barString=Double.toString(monthData.getChannels().get(i).getREngagementRate());
+                                barHeight=(int)(monthData.getChannels().get(i).getREngagementRate())*barHeight;
                                 break;
                             case 2:
                                 barString=Double.toString(monthData.getChannels().get(i).getTEngagementRate());
+                                barHeight=(int)(monthData.getChannels().get(i).getTEngagementRate())*barHeight;
                             case 3:
                                 barString=monthData.getChannels().get(i).getChannelName();
                         }
                     }
                 
+                    
+                Shape newShape1=new Shape(230+barSpace*i,25,barWidth,barHeight);
                 
-                Shape newShape1=new Shape(200+barSpace*i,200,barWidth,barHeight);
-                
-                Shape newShape2=new TextShape(200+barSpace*i,barWidth,
+                Shape newShape2=new TextShape(230+barSpace*i,10,
                     barString);
+                
+                newShape2.setX(newShape1.getX()-newShape2.getWidth()/3);
                 
                 mediaWindow.addShape(newShape1);
                 mediaWindow.addShape(newShape2);
+                
+                
+                
             }
-            
+            mediaWindow.setSize(tempWindowWidth, windowHeight);
             
         
         }else if (sortedData.getClass()==calculator.getQuarter().getClass()) {
