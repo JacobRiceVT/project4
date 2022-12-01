@@ -26,8 +26,6 @@ public class MediaGUI {
     private TextShape monthSelected = new TextShape(5, 5, "Select A Month");
     private TextShape sortmode = new TextShape(5, 20, "Select a sorting mode!");
     private TextShape engagementType = new TextShape(5, 35, "");
-    
-
 
     private int sortChoice = 0;
 
@@ -62,7 +60,7 @@ public class MediaGUI {
         quarter.onClick(this, "clickedQuarter");
 
         refreshText();
-        
+
         traditionalEngagementRate.onClick(this, "clickedTraditional");
         reachEngagementRate.onClick(this, "clickedReach");
 
@@ -70,13 +68,15 @@ public class MediaGUI {
         reachEngagementRate.setTitle("Reach Engagement Rate");
 
     }
-    
+
+
     public void refreshText() {
         mediaWindow.addShape(monthSelected);
         mediaWindow.addShape(sortmode);
         mediaWindow.addShape(engagementType);
     }
-    
+
+
     public void addMonthButtons() {
         refreshText();
         mediaWindow.addButton(month1, WindowSide.SOUTH);
@@ -84,66 +84,70 @@ public class MediaGUI {
         mediaWindow.addButton(month3, WindowSide.SOUTH);
         mediaWindow.addButton(quarter, WindowSide.SOUTH);
         monthSelected.setText("Select A Month");
-        
+
     }
-    
+
+
     public void removeMonthButtons() {
         refreshText();
         mediaWindow.removeButton(month1, WindowSide.SOUTH);
         mediaWindow.removeButton(month2, WindowSide.SOUTH);
         mediaWindow.removeButton(month3, WindowSide.SOUTH);
         mediaWindow.removeButton(quarter, WindowSide.SOUTH);
-        
+
     }
 
 
     public void clickedMonth1(Button button) {
-        displayData(1,sortChoice);
+        displayData(1, sortChoice);
         monthSelected.setText(month1.getTitle());
         refreshText();
-        
-        
 
     }
-    
+
+
     public void clickedMonth2(Button button) {
-        displayData(2,sortChoice);
+        displayData(2, sortChoice);
         monthSelected.setText(month2.getTitle());
         refreshText();
 
     }
-    
+
+
     public void clickedMonth3(Button button) {
-        displayData(3,sortChoice);
+        displayData(3, sortChoice);
         monthSelected.setText(month3.getTitle());
         refreshText();
 
     }
-    
+
+
     public void clickedQuarter(Button button) {
-        displayData(4,sortChoice);
+        displayData(4, sortChoice);
         monthSelected.setText("Quarter");
         refreshText();
 
     }
-    
+
+
     public void clickedTraditional(Button button) {
         engagementType.setText("Traditional sorting!");
         mediaWindow.repaint();
         refreshText();
-        
+
         addMonthButtons();
-        
-        sortChoice=2;
+
+        sortChoice = 2;
     }
-    
+
+
     public void clickedReach(Button button) {
         engagementType.setText("Sorting by Reach!");
         mediaWindow.repaint();
         refreshText();
         addMonthButtons();
-        
-        sortChoice=1;
+
+        sortChoice = 1;
     }
 
 
@@ -161,7 +165,7 @@ public class MediaGUI {
         mediaWindow.removeButton(reachEngagementRate, WindowSide.WEST);
         mediaWindow.setSize(windowWidth, windowHeight);
         mediaWindow.repaint();
-        
+
     }
 
 
@@ -171,7 +175,7 @@ public class MediaGUI {
     public void clickedSortByEngagementRate(Button button) {
         sortChoice = 0;
         mediaWindow.removeAllShapes();
-        
+
         sortmode.setText("Sorting by: Engagement Rate");
         engagementType.setText("Select a sorting algorithm!");
         mediaWindow.addButton(traditionalEngagementRate, WindowSide.WEST);
@@ -183,8 +187,6 @@ public class MediaGUI {
         mediaWindow.repaint();
 
     }
-    
-    
 
 
     /**
@@ -200,7 +202,7 @@ public class MediaGUI {
      * @param sortChoice
      * @return month or quarter.
      */
-    
+
     public Object sortData(int monthChoice, int sortChoice) {
         if (monthChoice != 0) {
             if (sortChoice != 0) {
@@ -210,7 +212,7 @@ public class MediaGUI {
                             case 1:
                                 calculator.getMonth1().getChannels()
                                     .sortByReachRate();
-                                
+
                                 break;
                             case 2:
                                 calculator.getMonth1().getChannels()
@@ -221,7 +223,7 @@ public class MediaGUI {
                                 calculator.getMonth1().getChannels()
                                     .sortByName();
                                 break;
-                                
+
                         }
                         return calculator.getMonth1();
 
@@ -279,7 +281,7 @@ public class MediaGUI {
 
                         }
                         return calculator.getQuarter();
-                        
+
                 }
             }
         }
@@ -292,68 +294,65 @@ public class MediaGUI {
      * @param sortChoice
      */
     public void displayData(int monthChoice, int sortChoice) {
-        
-        int tempWindowWidth=0;
-        Object sortedData=sortData(monthChoice, sortChoice);
-        String barString="Missing data!";
-        
-        
-        if (sortedData.getClass()==calculator.getMonth1().getClass()) {
-            
-            Month monthData=(Month)sortedData;
+
+        int tempWindowWidth = 0;
+        Object sortedData = sortData(monthChoice, sortChoice);
+        String barString = "Missing data!";
+
+        if (sortedData.getClass() == calculator.getMonth1().getClass()) {
+
+            Month monthData = (Month)sortedData;
             mediaWindow.removeAllShapes();
             refreshText();
 
-        
-            
-            
-            
-            for(int i=0;i<monthData.getChannels().size();i++) {
-                
-                
-                int barSpace=150;
-                
-                int barWidth=30;
-                int barHeight=2;
-                
-                tempWindowWidth+=barSpace*2;
-                
-                
-                    if (sortChoice != 0) {
-                        switch (sortChoice) {
-                            case 1:
-                                barString=Double.toString(monthData.getChannels().get(i).getREngagementRate());
-                                barHeight=(int)(monthData.getChannels().get(i).getREngagementRate())*barHeight;
-                                break;
-                            case 2:
-                                barString=Double.toString(monthData.getChannels().get(i).getTEngagementRate());
-                                barHeight=(int)(monthData.getChannels().get(i).getTEngagementRate())*barHeight;
-                            case 3:
-                                barString=monthData.getChannels().get(i).getChannelName();
-                        }
+            for (int i = 0; i < monthData.getChannels().size(); i++) {
+
+                int barSpace = 150;
+
+                int barWidth = 30;
+                int barHeight = 2;
+
+                String tempString = "";
+
+                tempWindowWidth += barSpace * 2;
+
+                if (sortChoice != 0) {
+                    switch (sortChoice) {
+                        case 1:
+                            barString = Double.toString(monthData.getChannels()
+                                .get(i).getREngagementRate());
+                            barHeight = (int)(monthData.getChannels().get(i)
+                                .getREngagementRate()) * barHeight;
+                            break;
+                        case 2:
+                            barString = Double.toString(monthData.getChannels()
+                                .get(i).getTEngagementRate());
+                            barHeight = (int)(monthData.getChannels().get(i)
+                                .getTEngagementRate()) * barHeight;
+                        case 3:
+                            barString = monthData.getChannels().get(i)
+                                .getChannelName();
                     }
-                
-                    
-                Shape newShape1=new Shape(230+barSpace*i,25,barWidth,barHeight);
-                
-                Shape newShape2=new TextShape(230+barSpace*i,10,
+                }
+
+                Shape newShape1 = new Shape(230 + barSpace * i, 25, barWidth,
+                    barHeight);
+
+                Shape newShape2 = new TextShape(230 + barSpace * i, 10,
                     barString);
-                
-                newShape2.setX(newShape1.getX()-newShape2.getWidth()/3);
-                
+
+                newShape2.setX(newShape1.getX() - newShape2.getWidth() / 3);
+
                 mediaWindow.addShape(newShape1);
                 mediaWindow.addShape(newShape2);
-                
-                
-                
+
             }
             mediaWindow.setSize(tempWindowWidth, windowHeight);
-            
-        
-        }else if (sortedData.getClass()==calculator.getQuarter().getClass()) {
-            sortedData=(Quarter)sortedData;
 
-    
+        }
+        else if (sortedData.getClass() == calculator.getQuarter().getClass()) {
+            sortedData = (Quarter)sortedData;
+
         }
     }
 }
