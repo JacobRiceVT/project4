@@ -19,7 +19,7 @@ public class Input {
         months = new Month[4];
 
         Month january = new Month("January");
-        Month febuary = new Month("Febuary");
+        Month febuary = new Month("February");
         Month march = new Month("March");
         Month april = new Month("April");
 
