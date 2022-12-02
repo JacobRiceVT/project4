@@ -131,8 +131,13 @@ public class MediaGUI {
 
 
     public void clickedTraditional(Button button) {
-        engagementType.setText("Traditional sorting!");
+        mediaWindow.removeAllShapes();
+        mediaWindow.setSize(windowWidth, windowHeight);
         mediaWindow.repaint();
+        
+        engagementType.setText("Traditional sorting!");
+        
+        
         refreshText();
 
         addMonthButtons();
@@ -142,6 +147,10 @@ public class MediaGUI {
 
 
     public void clickedReach(Button button) {
+        mediaWindow.removeAllShapes();
+        mediaWindow.setSize(windowWidth, windowHeight);
+        mediaWindow.repaint();
+        
         engagementType.setText("Sorting by Reach!");
         mediaWindow.repaint();
         refreshText();
