@@ -307,6 +307,7 @@ public class MediaGUI {
         int tempWindowWidth = 0;
         Object sortedData = sortData(monthChoice, sortChoice);
         String barString = "Missing data!";
+        
 
         if (sortedData.getClass() == calculator.getMonth1().getClass()) {
 
@@ -317,44 +318,76 @@ public class MediaGUI {
             for (int i = 0; i < monthData.getChannels().size(); i++) {
 
                 int barSpace = 150;
-
                 int barWidth = 30;
                 int barHeight = 2;
-
+                int reachMultiplier=13;
                 String tempString = "";
+                int ymove=0;
+                Color barColor= new Color(255, 0, 0);
 
                 tempWindowWidth += barSpace * 2;
+                barString =monthData.getChannels()
+                    .get(i).getChannelName();
 
+                
+                
+                
                 if (sortChoice != 0) {
                     switch (sortChoice) {
                         case 1:
-                            barString = Double.toString(monthData.getChannels()
-                                .get(i).getREngagementRate());
+                            
                             barHeight = (int)(monthData.getChannels().get(i)
-                                .getREngagementRate()) * barHeight;
+                                .getREngagementRate()) * barHeight*reachMultiplier;
+                            
+                            tempString= Double.toString(monthData.getChannels().get(i)
+                                .getREngagementRate());
+                            
+                            if(monthData.getChannels().get(i)
+                                .getREngagementRate()<19) {
+                                ymove=20;
+                            }
+                            
                             break;
                         case 2:
-                            barString = Double.toString(monthData.getChannels()
-                                .get(i).getTEngagementRate());
+                            
                             barHeight = (int)(monthData.getChannels().get(i)
                                 .getTEngagementRate()) * barHeight;
+                            tempString= Double.toString(monthData.getChannels().get(i)
+                                .getTEngagementRate());
+                            
+                            if(monthData.getChannels().get(i)
+                                .getTEngagementRate()<19) {
+                                ymove=20;
+                            }
+                            break;
+                            
                         case 3:
-                            barString = monthData.getChannels().get(i)
-                                .getChannelName();
+                            ymove=-1000;
+                            break;
                     }
                 }
-
                 Shape newShape1 = new Shape(230 + barSpace * i, 25, barWidth,
                     barHeight);
 
                 Shape newShape2 = new TextShape(230 + barSpace * i, 10,
                     barString);
-
+                
+                Shape newShape3= new TextShape(230+barSpace*i,10+newShape1.getHeight()/
+                    2,tempString);
+                
+                //trying both methods, they work great to move stuff around!
                 newShape2.setX(newShape1.getX() - newShape2.getWidth() / 3);
-
+                newShape3.move(-newShape3.getWidth()/2+barWidth/2, ymove);
+                
+                newShape1.setBackgroundColor(barColor);
+                newShape3.setBackgroundColor(barColor);
+                
+                mediaWindow.addShape(newShape3);
                 mediaWindow.addShape(newShape1);
                 mediaWindow.addShape(newShape2);
-
+                
+                
+                
             }
             mediaWindow.setSize(tempWindowWidth, windowHeight);
 
