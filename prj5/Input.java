@@ -120,7 +120,7 @@ public class Input {
             input = new MediaCalculator(strings[0]);
         }
         Quarter quarter1 = input.getQuarter();
-        LinkedList quarterChannels = quarter1.getQuarterChannels();
+        LinkedList quarterChannels = quarter1.getChannels();
         quarterChannels.sortByName();
         for (int i = 0; i < quarterChannels.size(); i++) {
             Channel channel = quarterChannels.get(i);

@@ -275,16 +275,16 @@ public class MediaGUI {
                     case 4:
                         switch (sortChoice) {
                             case 1:
-                                calculator.getQuarter().getQuarterChannels()
+                                calculator.getQuarter().getChannels()
                                     .sortByReachRate();
                                 break;
                             case 2:
-                                calculator.getQuarter().getQuarterChannels()
+                                calculator.getQuarter().getChannels()
                                     .sortByTraditionalRate();
                                 break;
 
                             case 3:
-                                calculator.getQuarter().getQuarterChannels()
+                                calculator.getQuarter().getChannels()
                                     .sortByName();
                                 break;
 
@@ -307,11 +307,8 @@ public class MediaGUI {
         int tempWindowWidth = 0;
         Object sortedData = sortData(monthChoice, sortChoice);
         String barString = "Missing data!";
+        Month monthData= (Month)sortedData;
         
-
-        if (sortedData.getClass() == calculator.getMonth1().getClass()) {
-
-            Month monthData = (Month)sortedData;
             mediaWindow.removeAllShapes();
             refreshText();
 
@@ -391,8 +388,8 @@ public class MediaGUI {
             }
             mediaWindow.setSize(tempWindowWidth, windowHeight);
 
-        }
-        else if (sortedData.getClass() == calculator.getQuarter().getClass()) {
+        
+         if (sortedData.getClass() == calculator.getQuarter().getClass()) {
             sortedData = (Quarter)sortedData;
 
         }
