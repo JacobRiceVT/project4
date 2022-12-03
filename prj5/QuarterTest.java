@@ -81,7 +81,7 @@ public class QuarterTest extends TestCase {
      * Tests the getQuartChannel method
      */
     public void testGetQuarterChannel() {
-        LinkedList quarterChannels = quarter.getQuarterChannels();
+        LinkedList quarterChannels = quarter.getChannels();
         assertEquals(quarterChannels.size(), 4);
         assertEquals(quarterChannels.get(3).getTEngagementRate(), 41.1, .01);
         assertEquals(quarterChannels.get(2).getTEngagementRate(), 34.6, .01);

@@ -4,7 +4,7 @@ package prj5;
  * @author Jung Chang
  * @version 11.17.22
  */
-public class Quarter extends Month{
+public class Quarter extends Month {
     /**
      * Fields
      */
@@ -21,7 +21,7 @@ public class Quarter extends Month{
      * @param month3
      *            the third month of the quarter
      */
-    
+
     public Quarter(Month month1, Month month2, Month month3) {
         super("");
         LinkedList month1Channels = month1.getChannels();
@@ -59,7 +59,12 @@ public class Quarter extends Month{
             Channel channel = monthChannels.get(i);
             int existsIndex = getIndexOf(channel);
             if (existsIndex == -1) {
-                quarterChannels.add(channel);
+                Channel clone = new Channel(channel.getUsername(), channel
+                    .getChannelName(), channel.getCountry(), channel
+                        .getMainTopic(), channel.getLikes(), channel.getPosts(),
+                    channel.getFollowers(), channel.getComments(), channel
+                        .getViews());
+                quarterChannels.add(clone);
             }
             else {
                 Channel exists = quarterChannels.get(existsIndex);
