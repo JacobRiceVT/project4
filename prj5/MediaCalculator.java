@@ -31,7 +31,6 @@ public class MediaCalculator {
 
 
     /**
-     * Tests the getQuarter method
      * @return quarter1
      */
     public Quarter getQuarter() {

@@ -19,12 +19,12 @@ public class Input {
         months = new Month[4];
 
         Month january = new Month("January");
-        Month febuary = new Month("February");
+        Month february = new Month("February");
         Month march = new Month("March");
         Month april = new Month("April");
 
         months[0] = january;
-        months[1] = febuary;
+        months[1] = february;
         months[2] = march;
         months[3] = april;
 
@@ -52,7 +52,6 @@ public class Input {
 
         // 10 per line
         Scanner file = new Scanner(new File(fileName));
-        int dataCount = 0;
         file.nextLine();
         while (file.hasNextLine()) {
             String read = file.nextLine();
@@ -115,33 +114,6 @@ public class Input {
      * The project runner method
      */
     public static void main(String[] strings) {
-        MediaCalculator input = new MediaCalculator("SampleInput1_2022.csv");
-        if (strings.length != 0) {
-            input = new MediaCalculator(strings[0]);
-        }
-        Quarter quarter1 = input.getQuarter();
-        LinkedList quarterChannels = quarter1.getChannels();
-        quarterChannels.sortByName();
-        for (int i = 0; i < quarterChannels.size(); i++) {
-            Channel channel = quarterChannels.get(i);
-            System.out.println(channel.getChannelName());
-            double traditionalRate = channel.getTEngagementRate();
-            if (traditionalRate == 0) {
-                System.out.println("traditional: " + "N/A");
-                System.out.println("==========");
-            }
-            else {
-                System.out.println("traditional: " + traditionalRate);
-                System.out.println("==========");
-            }
-        }
-        System.out.println("**********\r\n" + "**********");
-        quarterChannels.sortByReachRate();
-        for (int i = 0; i < quarterChannels.size(); i++) {
-            Channel channel = quarterChannels.get(i);
-            System.out.println(channel.getChannelName());
-            System.out.println("reach: " + channel.getREngagementRate());
-            System.out.println("==========");
-        }
+        new GUIWindow("SampleInput1_2022.csv");
     }
 }

@@ -7,7 +7,7 @@ import cs2.TextShape;
 import cs2.Window;
 import cs2.WindowSide;
 
-public class MediaGUI {
+public class GUIWindow {
     /**
      * Setting up buttons and other fields
      */
@@ -35,7 +35,7 @@ public class MediaGUI {
     /**
      * @param filename
      */
-    public MediaGUI(String fileName) {
+    public GUIWindow(String fileName) {
 
         mediaWindow = new Window();
         mediaWindow.setSize(windowWidth, windowHeight);
@@ -360,6 +360,7 @@ public class MediaGUI {
                             
                         case 3:
                             ymove=-1000;
+                            barHeight=0;
                             break;
                     }
                 }
