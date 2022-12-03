@@ -4,7 +4,7 @@ package prj5;
  * @author Jung Chang
  * @version 11.17.22
  */
-public class Quarter {
+public class Quarter extends Month{
     /**
      * Fields
      */
@@ -21,7 +21,9 @@ public class Quarter {
      * @param month3
      *            the third month of the quarter
      */
+    
     public Quarter(Month month1, Month month2, Month month3) {
+        super("");
         LinkedList month1Channels = month1.getChannels();
         LinkedList month2Channels = month2.getChannels();
         LinkedList month3Channels = month3.getChannels();
@@ -76,8 +78,9 @@ public class Quarter {
      * getting the quarterChannels list
      * 
      * @return quarteChannels
+     * 
      */
-    public LinkedList getQuarterChannels() {
+    public LinkedList getChannels() {
         return quarterChannels;
     }
 }

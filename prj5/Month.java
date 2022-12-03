@@ -4,7 +4,7 @@ package prj5;
  * @author Jung Chang
  * @version 11.17.22
  */
-public class Month {
+public class Month{
     /**
      * Fields
      */

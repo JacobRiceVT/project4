@@ -234,6 +234,10 @@ public class Channel {
      */
 
     public double getREngagementRate() {
+        if (views == 0) { 
+            return 0;
+        }
+        
         double totalEngagement = comments + likes;
         double rate = (totalEngagement / views) * 100;
         return Double.valueOf(DF.format(rate));

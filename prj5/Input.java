@@ -19,7 +19,7 @@ public class Input {
         months = new Month[4];
 
         Month january = new Month("January");
-        Month febuary = new Month("Febuary");
+        Month febuary = new Month("February");
         Month march = new Month("March");
         Month april = new Month("April");
 
@@ -120,7 +120,7 @@ public class Input {
             input = new MediaCalculator(strings[0]);
         }
         Quarter quarter1 = input.getQuarter();
-        LinkedList quarterChannels = quarter1.getQuarterChannels();
+        LinkedList quarterChannels = quarter1.getChannels();
         quarterChannels.sortByName();
         for (int i = 0; i < quarterChannels.size(); i++) {
             Channel channel = quarterChannels.get(i);
